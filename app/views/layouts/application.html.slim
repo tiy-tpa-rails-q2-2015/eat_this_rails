@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title eat THIS!
+    link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif' rel='stylesheet' type='text/css'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    header
+      h1 eat <em>THIS!</em>
+
+    = yield
+
+    footer
+      a href="#" Contact <em>THIS!</em>
+      p Built by the May 2015 Rails Engineering cohort at The Iron Yard - Tampa/St. Petersburg
