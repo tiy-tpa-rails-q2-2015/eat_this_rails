@@ -17,5 +17,30 @@
   <%= @review.image %>
 </p>
 
+<ul>
+  <% @review.comments.each do |comment| %>
+    <li>
+      <p><%= comment.body %></p>
+      <p class="author">by <%= comment.author %> on <%= comment.created_at.to_s(:short) %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_for(@review) do |f| %>
+  <% f.fields_for(:comments, Comment.new) do |g| %>
+    <div class="field">
+      <%= g.label :author %><br>
+      <%= g.text_field :author %>
+    </div>
+    <div class="field">
+      <%= g.label :body %><br>
+      <%= g.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% end %>
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
